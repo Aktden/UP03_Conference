@@ -71,5 +71,3 @@ Python 3.12 · FastAPI · Pydantic · SQLite · Uvicorn · HTML/CSS/JavaScript. 
 ## Инструкции
 
 [Установка](INSTALL.md) · [Развёртывание](DEPLOYMENT.md) · [Демонстрация](DEMO_GUIDE.md) · [Сдача и GitHub](docs/SUBMISSION_GUIDE.md) · [Безопасность](SECURITY.md) · [Релиз](RELEASE_NOTES.md).
-
-Результаты локальных проверок находятся в evidence/logs. Docker, BAT на Windows и GitHub Actions требуют выполнения в соответствующей среде: файлы подготовлены, внешние успешные запуски заранее не заявляются. Ссылка на будущий репозиторий и ФИО/группа не предоставлены; заполните repo_link.txt и персональные поля отчётов перед сдачей. История работы приложена как Git bundle.
