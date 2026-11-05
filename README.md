@@ -3,7 +3,7 @@
 Система регистрации участников, распределения по секциям, учёта посещений и выдачи бейджей. Продолжение проекта УП.02, переработанное для УП.03 «Сопровождение и обслуживание программного обеспечения компьютерных систем».
 ## Инструкции
 
-[Установка](https://github.com/Aktden/UP03_Conference/blob/main/docs/INSTALL.md) · [Развёртывание](DEPLOYMENT.md) · [Демонстрация](https://github.com/Aktden/UP03_Conference/tree/main/screenshots/screenshots) · [Сдача и GitHub](docs/SUBMISSION_GUIDE.md) · [Безопасность](https://github.com/Aktden/UP03_Conference/blob/main/docs/SECURITY.md) · [6 этапов](https://github.com/Aktden/UP03_Conference/tree/main/stages)
+[Установка](https://github.com/Aktden/UP03_Conference/blob/main/docs/INSTALL.md) · [Развёртывание](DEPLOYMENT.md) · [Демонстрация](https://github.com/Aktden/UP03_Conference/tree/main/screenshots/screenshots) · [Безопасность](https://github.com/Aktden/UP03_Conference/blob/main/docs/SECURITY.md) · [6 этапов](https://github.com/Aktden/UP03_Conference/tree/main/stages)
 
 <img width="1440" height="1060" alt="image" src="https://github.com/user-attachments/assets/7aacd0d7-ec1b-4c6c-be0c-e2c6e6e008bb" />
 
