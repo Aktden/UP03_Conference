@@ -1,73 +1,150 @@
-# Конференция
+<h1 align="center">Конференция</h1>
 
-Система регистрации участников, распределения по секциям, учёта посещений и выдачи бейджей. Продолжение проекта УП.02, переработанное для УП.03 «Сопровождение и обслуживание программного обеспечения компьютерных систем».
-## Инструкции
+<p align="center"><strong>Участники, программа и посещаемость в одном рабочем пространстве</strong></p>
 
-[Установка](https://github.com/Aktden/UP03_Conference/blob/main/docs/INSTALL.md) · [Развёртывание](DEPLOYMENT.md) · [Демонстрация](https://github.com/Aktden/UP03_Conference/tree/main/screenshots/screenshots) · [Безопасность](https://github.com/Aktden/UP03_Conference/blob/main/docs/SECURITY.md) · [6 этапов](https://github.com/Aktden/UP03_Conference/tree/main/stages)
+<p align="center">
+  <img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-244D43?style=flat-square&amp;logo=python&amp;logoColor=white">
+  <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-286B56?style=flat-square&amp;logo=fastapi&amp;logoColor=white">
+  <img alt="SQLite" src="https://img.shields.io/badge/SQLite-365F4E?style=flat-square&amp;logo=sqlite&amp;logoColor=white">
+  <img alt="Версия 3.0.0" src="https://img.shields.io/badge/v3.0.0-50703F?style=flat-square">
+</p>
 
-<img width="1440" height="1060" alt="image" src="https://github.com/user-attachments/assets/7aacd0d7-ec1b-4c6c-be0c-e2c6e6e008bb" />
+<p align="center">
+  <a href="#возможности">Возможности</a> ·
+  <a href="#быстрый-запуск">Быстрый запуск</a> ·
+  <a href="#демо-аккаунты">Демо-аккаунты</a> ·
+  <a href="#документация">Документация</a>
+</p>
 
+<p align="center">
+  <a href="screenshots/screenshots/dashboard.png">
+    <img src="screenshots/screenshots/dashboard.png" width="760" alt="Обзор конференции с расписанием, статистикой и последними регистрациями">
+  </a>
+</p>
 
-## Быстрый запуск на Windows
-
-Нужен **Python 3.12**. Установите его с [python.org](https://www.python.org/downloads/) и добавьте в PATH. Распакуйте проект, откройте терминал в его папке:
-
-```bat
-scripts\setup.bat
-scripts\run.bat
-```
-
-Откройте **http://127.0.0.1:8000**. База и вымышленные демо-данные создаются автоматически. Остановка — Ctrl+C. Повторный запуск сохраняет изменения. IDE, Node.js и отдельный сервер БД не нужны.
-
-| Логин | Пароль только для демо | Права |
-|---|---|---|
-| admin | DemoAdmin!2026 | Все операции, экспорт, восстановление, аудит |
-| operator | DemoOperator!2026 | Участники, регистрация, посещения, бейджи |
-| viewer | DemoViewer!2026 | Сводки и программа без персональных записей |
-
-## Linux и macOS
-
-```sh
-make setup
-make run
-```
-
-Без Make: `python3 -m venv .venv`, `.venv/bin/python -m pip install -r requirements-dev.txt`, `.venv/bin/python main.py`.
-
-## Проверки
-
-```bat
-scripts\check.bat
-scripts\build.bat
-```
-
-Эквиваленты — `make check`, `make build`. Проверка останавливается на ошибке линтера, форматирования или тестов; порог покрытия 80%. Релиз создаётся в `release/conference-v3.0.0.zip`, контрольная сумма — `release/SHA256SUMS.txt`.
-
-Проверка UI: `.venv\Scripts\python.exe -m playwright install chromium`, затем `.venv\Scripts\python.exe scripts\ui_smoke.py`. Скрипт сам поднимает временный сервер и отдельную демо-базу. В Linux замените интерпретатор на `.venv/bin/python`.
+Веб-приложение для оргкомитета конференции. Проект продолжает УП.02 и доработан в рамках УП.03 «Сопровождение и обслуживание программного обеспечения компьютерных систем».
 
 ## Возможности
 
-- Единый адаптивный интерфейс на русском, поиск и фильтры.
-- Создание и редактирование участников, уникальность email, роли участников.
-- Секции с расписанием и вместимостью, защита от одновременного переполнения.
-- Регистрация на секции, отметки посещения и отмена записи.
-- Печатные бейджи; выдача отмечается отдельно от открытия окна печати.
-- Сводки, JSON и CSV, проверяемое восстановление данных.
-- Серверные сессии, CSRF, роли сотрудников, аудит и healthcheck.
-- Резервные копии SQLite, Makefile/BAT, Docker и CI.
+| Раздел | Что можно сделать |
+| --- | --- |
+| **Участники** | Добавить или отредактировать карточку, найти участника по имени и отфильтровать список по роли. Email проверяется на уникальность. |
+| **Секции** | Составить программу с временем, аудиторией и лимитом мест. Свободные места видны в карточке секции. |
+| **Посещаемость** | Записать участника на секцию, отметить визит или отменить запись. |
+| **Бейджи** | Напечатать один бейдж или все сразу и отдельно отметить выдачу. |
+| **Отчёты** | Посмотреть сводки по посещениям и заполненности, экспортировать данные в CSV и JSON или загрузить JSON для восстановления с проверкой перед записью. |
+| **Сопровождение** | Посмотреть журнал действий, проверить состояние приложения, сохранить и восстановить копию SQLite. |
 
-## Стек и файлы
+<details>
+<summary>Скриншоты рабочих экранов</summary>
 
-Python 3.12 · FastAPI · Pydantic · SQLite · Uvicorn · HTML/CSS/JavaScript. Ресурсы интерфейса локальные. Точные версии 17 библиотек приложения — в requirements.txt.
+| Участники | Программа и секции |
+| --- | --- |
+| [![Реестр участников с поиском и фильтрами](screenshots/screenshots/participants.png)](screenshots/screenshots/participants.png) | [![Карточки секций со временем и свободными местами](screenshots/screenshots/sections.png)](screenshots/screenshots/sections.png) |
 
-| Путь | Назначение |
-|---|---|
-| main.py, config.py | Приложение, запуск и настройки |
-| database.py, models.py, security.py | Хранилище, валидация, права |
-| routers/ | API предметных модулей |
-| frontend/ | Интерфейс и стили печати |
-| scripts/, tests/ | Обслуживание и проверки |
-| docs/ | Инструкции, риски, тест-план, инцидент |
-| submission/ | Отчёты Word по шести этапам |
-| evidence/ | Реальные результаты и снимки приложения |
-| .github/ | CI и шаблоны Issue/PR |
+[Посещаемость](screenshots/screenshots/attendance.png) · [Бейджи](screenshots/screenshots/badges.png) · [Отчёты](screenshots/screenshots/reports.png) · [Мобильный интерфейс](screenshots/screenshots/mobile-dashboard.png) · [Все скриншоты](screenshots/screenshots/)
+
+</details>
+
+## Быстрый запуск
+
+Для локального демо нужны **Python 3.12** и браузер. Скачайте проект или клонируйте его с GitHub.
+
+```bash
+git clone https://github.com/Aktden/UP03_Conference.git
+cd UP03_Conference
+```
+
+> [!NOTE]
+> В текущей ветке `main` Python-модули лежат в `src/`. Скрипты запуска и сборки ищут их в корне. Выполните команды ниже из корня свежей локальной копии. Первая команда копирует туда нужные модули.
+
+### Windows · PowerShell
+
+```powershell
+Copy-Item -Path .\src\*.py -Destination .
+.\scripts\setup.bat
+.\scripts\run.bat
+```
+
+### Linux и macOS
+
+```bash
+cp src/*.py .
+make setup PYTHON=python3.12
+make run
+```
+
+<details>
+<summary>Запуск без Make</summary>
+
+```bash
+cp src/*.py .
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+test -f .env || cp .env.example .env
+.venv/bin/python main.py
+```
+
+</details>
+
+Откройте <http://127.0.0.1:8000>. При первом запуске приложение создаёт `data/conference.db` и заполняет её вымышленными данными. База сохраняется между запусками. Для остановки сервера нажмите **Ctrl+C**.
+
+[Документация API в Swagger UI](http://127.0.0.1:8000/docs) · [Проверка состояния приложения](http://127.0.0.1:8000/api/health)
+
+## Демо-аккаунты
+
+| Роль | Логин | Демо-пароль | Доступ |
+| --- | --- | --- | --- |
+| Администратор | `admin` | `DemoAdmin!2026` | Все разделы, экспорт, импорт и журнал действий. |
+| Оператор | `operator` | `DemoOperator!2026` | Работа с участниками, записями на секции, посещениями и бейджами. |
+| Наблюдатель | `viewer` | `DemoViewer!2026` | Программа и агрегированные сводки. |
+
+## Проверки и сборка
+
+Команды выполняются после подготовки локальной копии и установки зависимостей через `setup.bat` или `make setup`.
+
+| Действие | Windows | Linux и macOS |
+| --- | --- | --- |
+| Линтер, форматирование и тесты с порогом покрытия 80% | `.\scripts\check.bat` | `make check` |
+| Сборка релизного архива `release/conference-v3.0.0.zip` и контрольной суммы SHA-256 | `.\scripts\build.bat` | `make build` |
+
+<details>
+<summary>Проверка интерфейса с Playwright</summary>
+
+**Windows**
+
+```powershell
+.\.venv\Scripts\python.exe -m playwright install chromium
+.\.venv\Scripts\python.exe scripts\ui_smoke.py
+```
+
+**Linux и macOS**
+
+```bash
+.venv/bin/python -m playwright install chromium
+.venv/bin/python scripts/ui_smoke.py
+```
+
+Скрипт запускает отдельный сервер с временной демо-базой.
+
+</details>
+
+## Структура проекта
+
+| Путь | Содержимое |
+| --- | --- |
+| [`src/`](src/) | Приложение FastAPI, настройки, модели Pydantic, работа с SQLite и контроль доступа. |
+| [`routers/`](routers/) | Маршруты API для авторизации, участников, секций, посещений, бейджей и отчётов. |
+| [`frontend/`](frontend/) | Адаптивный интерфейс на HTML, CSS и JavaScript со стилями печати. |
+| [`scripts/`](scripts/) · [`tests/`](tests/) | Запуск, сборка, резервное копирование и автоматизированные проверки. |
+| [`docs/`](docs/) · [`stages/`](stages/) | Инструкции, отчёты и материалы шести этапов практики. |
+
+## Документация
+
+| Материал | Содержание |
+| --- | --- |
+| [Установка и конфигурация](docs/INSTALL.md) | Переменные окружения, типовые ошибки и перенос базы УП.02. |
+| [Развёртывание](DEPLOYMENT.md) | Docker Compose, рабочий режим, перезапуск и откат. |
+| [Резервное копирование](docs/BACKUP_RESTORE_REPORT.md) | Сохранение и проверка копии SQLite, восстановление в отдельный файл. |
+| [Безопасность](docs/SECURITY.md) | Разграничение доступа, сессии и требования к рабочему режиму. |
+| [План тестирования](docs/TEST_PLAN.md) · [История изменений](docs/CHANGELOG.md) | Сценарии проверки и доработки версии 3.0.0. |
